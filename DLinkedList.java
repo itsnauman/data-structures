@@ -81,7 +81,7 @@ public class DLinkedList <T> {
         checkIndex(index);
         int mid = size / 2;
         int counter = 0;
-
+        // Optimize the get operation but accessing the element from the nearest end
         if (index < mid) {
             Node <T> current = head;
             while (counter < index) {
