@@ -1,8 +1,10 @@
+import java.util.NoSuchElementException;
+
 /**
  * Doubly Linked List Implementation
  * @author Nauman Ahmad
  */
-class DLinkedList <T> {
+public class DLinkedList <T> {
     private Node <T> head;
     private Node <T> tail;
     private int size;
