@@ -98,7 +98,7 @@ public class BinarySearchTree <E extends Comparable<E>> {
         return countLeaves(root);
     }
 
-    private int countLeaves(BSTNode node) {
+    private int countLeaves(BSTNode <E> node) {
         if (node == null)
             return 0;
 
@@ -115,7 +115,7 @@ public class BinarySearchTree <E extends Comparable<E>> {
     /**
      * Recursively calculate the size
      */
-    private int size(BSTNode node) {
+    private int size(BSTNode <E> node) {
         if (node == null)
             return 0;
         return 1 + size(node.left) + size(node.right);
@@ -125,7 +125,7 @@ public class BinarySearchTree <E extends Comparable<E>> {
         return height(root);
     }
 
-    private int height(BSTNode node) {
+    private int height(BSTNode <E> node) {
         if (node == null)
             return -1;
         return 1 + Math.max(height(node.left), height(node.right));
