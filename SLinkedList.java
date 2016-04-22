@@ -112,14 +112,14 @@ import java.util.NoSuchElementException;
 
     @Override
     public String toString() {
-        StringBuilder content = new StringBuilder();
+        StringBuilder content = new StringBuilder("[");
         Node current = head;
 
         while (current.next != null) {
             content.append(current.data).append(",");
             current = current.next;
         }
-        content.append(current.data);
+        content.append(current.data, "]");
         return content.toString();
     }
 
