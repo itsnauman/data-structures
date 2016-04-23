@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
+import java.util.*;
+import java.util.LinkedList;
 
 /**
  * Class to implement the Binary Search Tree
@@ -171,6 +173,27 @@ public class BinarySearchTree <E extends Comparable<E>> {
             postOrderTraverse(node.right, list);
             list.add(node.data);
         }
+    }
+    
+    public ArrayList <E> breadthFirstTraversal() {
+        Queue <BSTNode <E>> queue = new LinkedList<>();
+        ArrayList <E> list = new ArrayList<>();
+
+        if (root == null)
+            return null;
+
+        queue.add(root);
+
+        while (!queue.isEmpty()) {
+            BSTNode <E> node = queue.remove();
+            list.add(node.data);
+            if (node.left != null)
+                queue.add(node.left);
+            if (node.right != null)
+                queue.add(node.right);
+        }
+
+        return list;
     }
 
     @Override
