@@ -1,15 +1,15 @@
 import java.util.ArrayList;
 
 /**
- * This class implements the binary max heap data structure for use
+ * This class implements the binary min heap data structure for use
  * as a priority queue.
  *
  * @author Nauman Ahmad
  */
-public class MaxHeap <T extends Comparable<T>> {
+public class BinaryMaxHeap <T extends Comparable<T>> {
     private ArrayList<T> array = new ArrayList<>();
     private int size;
-    
+
     /**
      * Remove the max value from the heap ie the root.
      * @return The value removed
@@ -43,12 +43,10 @@ public class MaxHeap <T extends Comparable<T>> {
      * @return Index of the child
      */
     public int maxChildIndex(int index) {
-        int left = leftChildIndex(index);
-        int right = rightChildIndex(index);
-        if (left >= size) return -1;
-        if (right >= size) return left;
+        if (left(index) >= size) return -1;
+        if (right(index) >= size) return left(index);
 
-        return array.get(left).compareTo(array.get(right)) > 0 ? left: right;
+        return array.get(left(index)).compareTo(array.get(right(index))) > 0 ? left(index): right(index);
     }
 
     /**
@@ -67,9 +65,9 @@ public class MaxHeap <T extends Comparable<T>> {
     private void rearrangeInsertion() {
         int index = size - 1; // Get index of last element
 
-        while ((index > 0) && array.get(parentIndex(index)).compareTo(array.get(index)) < 0) {
-            swap(index, parentIndex(index));
-            index = parentIndex(index);
+        while ((index > 0) && array.get(parent(index)).compareTo(array.get(index)) < 0) {
+            swap(index, parent(index));
+            index = parent(index);
         }
     }
 
@@ -80,15 +78,15 @@ public class MaxHeap <T extends Comparable<T>> {
         return array.get(0);
     }
 
-    private int parentIndex(int index) {
+    private int parent(int index) {
         return (index - 1) / 2;
     }
 
-    private int leftChildIndex(int index) {
+    private int left(int index) {
         return (index * 2) + 1;
     }
 
-    private int rightChildIndex(int index) {
+    private int right(int index) {
         return (index * 2) + 2;
     }
 
