@@ -195,7 +195,22 @@ public class BinarySearchTree <E extends Comparable<E>> {
 
         return list;
     }
+    
+    public void sortedArrayToBST(E[] arr) {
+        root = sortedArrayToBST(arr, 0, arr.length - 1);
+    }
 
+    private BSTNode <E> sortedArrayToBST(E[] arr, int start, int end) {
+        if (start > end) return null;
+
+        int mid = (start + end) / 2;
+
+        BSTNode <E> node = new BSTNode<>(arr[mid]);
+        node.left = sortedArrayToBST(arr, start, mid - 1);
+        node.right = sortedArrayToBST(arr, mid + 1, end);
+        return node;
+    }
+    
     @Override
     public String toString() {
         printBinaryTree(root, 0);
